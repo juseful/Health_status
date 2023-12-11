@@ -188,7 +188,7 @@ rects5 = ax.bar(labels_bar_dm, value05, width, label=label05,alpha=0.85
                   ,bottom=[value01[i]+value02[i]+value03[i]+value04[i] for i in range(len(value01))]
                   ,color=plt.get_cmap('RdYlBu')(np.linspace(0.15, 0.8,np.array(cact_agegrp_exec).shape[0]))[0])
 
-ax.set_title('그룹별 관상동맥 칼슘화 분포\n\n',fontsize=30)
+ax.set_title('심장 관상동맥 칼슘화 분포\n\n',fontsize=30)
 ax.set_ylabel(
                 '(단위: %)' # 표시값
                  ,labelpad=-70 # 여백값 설정
