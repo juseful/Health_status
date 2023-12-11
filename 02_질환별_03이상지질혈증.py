@@ -25,7 +25,7 @@ data
 # 조건별 그룹 설정
 ### 정상, 기타 결과 그룹 분리
 GRP = 'DYSLIPID'
-data.loc[(data['BL3113'] >= 240) | (data['BL314201'] >= 160 ) | (data['BL3141'] >= 200 ) | (data['BL3142'] < 40 ) | (data['TRT_MED_HYPERLIPIDEMIA'] == '1'), GRP] = '이상지질혈증'
+data.loc[(data['BL3113'] >= 240) | (data['BL314201'] >= 160 ) | (data['BL3141'] >= 200 ) | (data['BL3142'] < 40 ) | (data['TRT_MED_HYPERLIPIDEMIA'] == '1'), GRP] = '고지혈증'
 data['DYSLIPID'].fillna('정상',inplace=True)
 
 # data.loc[data['GEND_CD'] == 'M', 'GENDER'] = '남'
@@ -160,7 +160,7 @@ rects1 = ax.bar(x - 0.2, value01, width, label='임원',color=plt.get_cmap('RdYl
 rects2 = ax.bar(x + 0.2, value02, width, label='정규일반',color=plt.get_cmap('RdYlBu')(np.linspace(0.15, 0.85,np.array(dysl_per_exec.iloc[0,:-1]).shape[0]))[1])
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
-ax.set_title('연령별 이상지질혈증 유병율(22~23년)\n\n',fontsize=30)
+ax.set_title('연령별 고지혈증 유병율(22~23년)\n\n',fontsize=30)
 ax.set_ylabel(
                 '(단위: %)' # 표시값
                  ,labelpad=-70 # 여백값 설정
@@ -195,12 +195,12 @@ autolabel(rects2)
 
 fig.tight_layout()
 
-plt.savefig("{}/02_03이상지질혈증_01유병율.png".format(workdir)
+plt.savefig("{}/02_03고지혈증_01유병율.png".format(workdir)
            , dpi=175)
 
 plt.show()
 
 #%%
 with pd.ExcelWriter('{}/health_status_TABLE.xlsx'.format(workdir), mode='a',engine='openpyxl') as writer:
-    dysl_agegrp.to_excel(writer,sheet_name="02_03이상지질혈증")
+    dysl_agegrp.to_excel(writer,sheet_name="02_03고지혈증")
 # %%
